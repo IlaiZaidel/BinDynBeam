@@ -68,18 +68,6 @@
   </p>
 
   <p class="small-note">
-    The proposed framework employs continuously tracked Relative Transfer Functions (RTFs) to guide the estimation of
-    time-varying beamformer weights in dynamic acoustic environments. The RTFs provide spatial cues that enable the
-    network to adapt its beampatterns in real time and maintain focus on the moving speaker. The system generates a
-    binaural output that preserves the spatial characteristics of the target source, promoting natural listening and
-    supporting applications such as hearing aids and hearable devices.
-  </p>
-
-  <!-- ================= BINAURAL / SPATIAL ANALYSIS ================= -->
-  <section id="binaural-analysis">
-    <h2>Binaural analysis – spatial behavior and cue preservation</h2>
-
-    <p class="small-note">
       In this work, we propose a deep beamforming framework for speech enhancement in dynamic acoustic environments.
       The framework learns time-varying beamformer weights from noisy multichannel signals via a deep neural network,
       guided by a continuously tracked relative transfer function (RTF) of a moving target speaker. We analyze the
@@ -91,6 +79,14 @@
       head-related transfer function (HRTF)-based acoustic simulation of a moving speaker. Spatial-cue preservation
       is evaluated via interaural level and time differences (ILD/ITD), demonstrating suitability for hearable
       applications.
+  </p>
+
+  <!-- ================= BINAURAL / SPATIAL ANALYSIS ================= -->
+  <section id="binaural-analysis">
+    <h2>Binaural analysis – spatial behavior and cue preservation</h2>
+
+    <p class="small-note">
+
     </p>
 
     <div class="analysis-grid">
@@ -137,25 +133,6 @@
 
     </div>
 
-    <!-- Optional: ILD/ITD plot placeholders (drop your PNGs here) -->
-    <div class="card" style="margin-top:18px;">
-      <h3>Spatial cue preservation (ILD/ITD)</h3>
-      <p class="caption">
-        Add your ILD/ITD figures here (e.g., overlaid PDFs across time windows). Place the images in the same folder
-        and update the filenames below.
-      </p>
-      <!-- Example placeholders:
-      <img src="ild_itd_window1.png" alt="ILD/ITD PDF – Window 1">
-      <img src="ild_itd_window2.png" alt="ILD/ITD PDF – Window 2">
-      <img src="ild_itd_window3.png" alt="ILD/ITD PDF – Window 3">
-      -->
-      <p class="caption"><i>(Placeholders are commented out so the page won’t show broken images.)</i></p>
-    </div>
-
-  </section>
-
-  <!-- ================= Your existing examples (kept as-is) ================= -->
-  <!-- If these files don't exist in your repo, you can delete these two sections. -->
 
   <section>
     <h2>Example 1 – Babble Noise (3 dB SNR)</h2>
@@ -172,7 +149,8 @@
     <audio controls src="audio/clean/Dynamic_Clean_Speech.wav"></audio>
     <img src="audio/spectograms/clean_6_spectrogram.png" alt="Clean spectrogram (3 dB)">
   </section>
-
+  <section id="multichannel">
+    <h2>Multichannel beamforming for speech enhancement with dynamic target speaker </h2>
   <section>
     <h2>Example 2 – Babble Noise (6 dB SNR)</h2>
 
