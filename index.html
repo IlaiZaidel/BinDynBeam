@@ -11,6 +11,50 @@
     img { width: 100%; border: 1px solid #ccc; margin-top: 8px; }
     section { margin-bottom: 60px; }
     footer { text-align: center; font-size: 0.9em; color: #666; margin-top: 40px; }
+
+    /* ---- New: analysis layout helpers ---- */
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    @media (min-width: 900px) {
+      .analysis-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      padding: 14px;
+      background: #fafafa;
+    }
+    .card h3 {
+      margin: 0 0 8px 0;
+      color: #003366;
+      font-size: 1.05em;
+    }
+    .small-note {
+      font-size: 0.95em;
+      color: #444;
+      margin: 10px auto 0 auto;
+      max-width: 850px;
+      text-align: justify;
+    }
+    .caption {
+      font-size: 0.92em;
+      color: #555;
+      margin-top: 6px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid #cfcfcf;
+      background: #ffffff;
+      font-size: 0.9em;
+      margin-bottom: 8px;
+      color: #003366;
+    }
   </style>
 </head>
 <body>
@@ -18,20 +62,101 @@
   <h1>Audio Samples – Binaural Deep Dynamic Beamforming</h1>
   <p style="text-align:center">
     Ilai Zaidel and Sharon Gannot  
-<br>
+    <br>
     Audio samples accompanying the paper:<br>
     <i>"A Study of Binaural Deep Beamforming with Interpretable Beampatterns Guided by Time-Varying RTF"</i>
   </p>
-<p style="text-align:justify; max-width:800px; margin:20px auto;">
-The proposed framework employs continuously tracked Relative Transfer
-Functions (RTFs) to guide the estimation of the time-varying beamformer weights
-in dynamic acoustic environments. The RTFs provide spatial cues that enable
-the network to adapt its beampatterns in real time and maintain focus on the
-moving speaker. The system generates a binaural output that
-preserves the spatial characteristics of the target source, promoting natural
-listening and supporting applications such as hearing aids and hearable devices.
-</p>
-  <!-- ================= Example 1: 3 dB ================= -->
+
+  <p class="small-note">
+    The proposed framework employs continuously tracked Relative Transfer Functions (RTFs) to guide the estimation of
+    time-varying beamformer weights in dynamic acoustic environments. The RTFs provide spatial cues that enable the
+    network to adapt its beampatterns in real time and maintain focus on the moving speaker. The system generates a
+    binaural output that preserves the spatial characteristics of the target source, promoting natural listening and
+    supporting applications such as hearing aids and hearable devices.
+  </p>
+
+  <!-- ================= BINAURAL / SPATIAL ANALYSIS ================= -->
+  <section id="binaural-analysis">
+    <h2>Binaural analysis – spatial behavior and cue preservation</h2>
+
+    <p class="small-note">
+      In this work, we propose a deep beamforming framework for speech enhancement in dynamic acoustic environments.
+      The framework learns time-varying beamformer weights from noisy multichannel signals via a deep neural network,
+      guided by a continuously tracked relative transfer function (RTF) of a moving target speaker. We analyze the
+      network’s spatial behavior on an 8-microphone linear array by evaluating narrowband and wideband beampatterns
+      in three modes: (i) oracle guidance with true RTFs, (ii) guidance with subspace-tracked RTF estimates, and
+      (iii) operation without RTF guidance. Results show that RTF guidance yields smoother, more spatially consistent
+      beampatterns that track the target DOA, whereas the unguided model fails to maintain a clear spatial focus.
+      We further extend the framework to binaural beamforming for a dynamic target speaker, trained using a
+      head-related transfer function (HRTF)-based acoustic simulation of a moving speaker. Spatial-cue preservation
+      is evaluated via interaural level and time differences (ILD/ITD), demonstrating suitability for hearable
+      applications.
+    </p>
+
+    <div class="analysis-grid">
+
+      <!-- Mixture -->
+      <div class="card">
+        <div class="pill">Reference</div>
+        <h3>Mixture (binaural)</h3>
+        <!-- Only _0.wav -->
+        <audio controls src="10_2_Final_TRUE_RTF_y_0.wav"></audio>
+        <img src="clean_y_spectrogram.png" alt="Mixture/Reference spectrogram">
+        <div class="caption">Spectrogram: reference/mixture (as saved in your folder).</div>
+      </div>
+
+      <!-- Oracle / True RTF -->
+      <div class="card">
+        <div class="pill">Mode (i)</div>
+        <h3>Oracle guidance (True RTF)</h3>
+        <!-- Only _0.wav -->
+        <audio controls src="10_2_Final_TRUE_RTF__x_hat_stage1_0.wav"></audio>
+        <img src="true_rtf_spectrogram.png" alt="True-RTF guided spectrogram">
+        <div class="caption">RTF-guided enhancement using true/oracle RTFs.</div>
+      </div>
+
+      <!-- Subspace tracked / PAST -->
+      <div class="card">
+        <div class="pill">Mode (ii)</div>
+        <h3>Guidance with tracked RTF (PAST)</h3>
+        <!-- Only _0.wav -->
+        <audio controls src="12_2_RTF_TRACKING_PAST__x_hat_stage1_0.wav"></audio>
+        <img src="past_rtf_spectrogram.png" alt="PAST-RTF guided spectrogram">
+        <div class="caption">RTF-guided enhancement using subspace-tracked (PAST) RTF estimates.</div>
+      </div>
+
+      <!-- No RTF guidance -->
+      <div class="card">
+        <div class="pill">Mode (iii)</div>
+        <h3>No RTF guidance</h3>
+        <!-- Only _0.wav -->
+        <audio controls src="10_2_Final_MIX_ONLY_DEVICE_1__x_hat_stage1_0.wav"></audio>
+        <img src="no_rtf_spectrogram.png" alt="No-RTF spectrogram">
+        <div class="caption">Unguided model: reduced directionality / less consistent spatial focus.</div>
+      </div>
+
+    </div>
+
+    <!-- Optional: ILD/ITD plot placeholders (drop your PNGs here) -->
+    <div class="card" style="margin-top:18px;">
+      <h3>Spatial cue preservation (ILD/ITD)</h3>
+      <p class="caption">
+        Add your ILD/ITD figures here (e.g., overlaid PDFs across time windows). Place the images in the same folder
+        and update the filenames below.
+      </p>
+      <!-- Example placeholders:
+      <img src="ild_itd_window1.png" alt="ILD/ITD PDF – Window 1">
+      <img src="ild_itd_window2.png" alt="ILD/ITD PDF – Window 2">
+      <img src="ild_itd_window3.png" alt="ILD/ITD PDF – Window 3">
+      -->
+      <p class="caption"><i>(Placeholders are commented out so the page won’t show broken images.)</i></p>
+    </div>
+
+  </section>
+
+  <!-- ================= Your existing examples (kept as-is) ================= -->
+  <!-- If these files don't exist in your repo, you can delete these two sections. -->
+
   <section>
     <h2>Example 1 – Babble Noise (3 dB SNR)</h2>
 
@@ -48,7 +173,6 @@ listening and supporting applications such as hearing aids and hearable devices.
     <img src="audio/spectograms/clean_6_spectrogram.png" alt="Clean spectrogram (3 dB)">
   </section>
 
-  <!-- ================= Example 2: 6 dB ================= -->
   <section>
     <h2>Example 2 – Babble Noise (6 dB SNR)</h2>
 
