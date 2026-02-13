@@ -68,10 +68,12 @@
   </p>
 
   <p class="small-note">
-   This demo accompanies our work on interpretable deep, time-varying beamforming for a moving target speaker. We evaluate the framework in three operating modes:
+This demo accompanies our work on interpretable deep, time-varying beamforming for a moving target speaker. We evaluate the framework in three operating modes: 
     oracle guidance using the true relative transfer function (RTF), guidance using subspace-tracked (PAST) RTF estimates, and operation without RTF guidance. 
-    In the 8-microphone section, we highlight speech enhancement performance on multichannel recordings, while the binaural section examines binaural cue preservation 
-    under the different guidance modes. </p>
+    In the 8-microphone section, we highlight speech enhancement performance on multichannel recordings. Since the enhancement performance in terms of SI-SDR was 
+    the same across the three models, 
+    the results presented are only for the oracle-guided one. 
+    The binaural section examines binaural cue preservation under the different guidance modes.</p>
 
   <!-- ================= BINAURAL / SPATIAL ANALYSIS ================= -->
   <section id="binaural-analysis">
@@ -86,17 +88,17 @@
       <!-- Mixture -->
       <div class="card">
         <div class="pill">Reference</div>
-        <h3>Mixture (binaural)</h3>
+        <h3>Mixture (binaural) - 6dB SNR</h3>
         <!-- Only _0.wav -->
         <audio controls src="audio/binaural/10_2_Final_TRUE_RTF_y_0.wav"></audio>
         <img src="audio/binaural/clean_y_spectrogram.png" alt="Mixture/Reference spectrogram">
-        <div class="caption">Spectrogram: reference/mixture (as saved in your folder).</div>
+          <div class="caption">Binaural dynamic speaker in babble noise enviornment.</div>
       </div>
 
       <!-- Oracle / True RTF -->
       <div class="card">
         <div class="pill">Mode (i)</div>
-        <h3>Oracle guidance (True RTF)</h3>
+        <h3>Oracle guidance (True RTF) - 6dB SNR</h3>
         <!-- Only _0.wav -->
         <audio controls src="audio/binaural/10_2_Final_TRUE_RTF__x_hat_stage1_0.wav"></audio>
         <img src="audio/binaural/true_rtf_spectrogram.png" alt="True-RTF guided spectrogram">
@@ -106,7 +108,7 @@
       <!-- Subspace tracked / PAST -->
       <div class="card">
         <div class="pill">Mode (ii)</div>
-        <h3>Guidance with tracked RTF (PAST)</h3>
+        <h3>Guidance with tracked RTF (PAST) - 6dB SNR</h3>
         <!-- Only _0.wav -->
         <audio controls src="audio/binaural/12_2_RTF_TRACKING_PAST__x_hat_stage1_0.wav"></audio>
         <img src="audio/binaural/past_rtf_spectrogram.png" alt="PAST-RTF guided spectrogram">
@@ -120,7 +122,7 @@
         <!-- Only _0.wav -->
         <audio controls src="audio/binaural/10_2_Final_MIX_ONLY_DEVICE_1__x_hat_stage1_0.wav"></audio>
         <img src="audio/binaural/no_rtf_spectrogram.png" alt="No-RTF spectrogram">
-        <div class="caption">Unguided model: reduced directionality / less consistent spatial focus.</div>
+        <div class="caption">Unguided model: less consistent spatial focus.</div>
       </div>
 
     </div>
