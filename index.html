@@ -64,22 +64,14 @@
     Ilai Zaidel and Sharon Gannot  
     <br>
     Audio samples accompanying the paper:<br>
-    <i>"A Study of Binaural Deep Beamforming with Interpretable Beampatterns Guided by Time-Varying RTF"</i>
+    <i>"Interpretable Binaural Deep Beamforming Guided by Time-Varying Relative Transfer Function"</i>
   </p>
 
   <p class="small-note">
-      In this work, we propose a deep beamforming framework for speech enhancement in dynamic acoustic environments.
-      The framework learns time-varying beamformer weights from noisy multichannel signals via a deep neural network,
-      guided by a continuously tracked relative transfer function (RTF) of a moving target speaker. We analyze the
-      network’s spatial behavior on an 8-microphone linear array by evaluating narrowband and wideband beampatterns
-      in three modes: (i) oracle guidance with true RTFs, (ii) guidance with subspace-tracked RTF estimates, and
-      (iii) operation without RTF guidance. Results show that RTF guidance yields smoother, more spatially consistent
-      beampatterns that track the target DOA, whereas the unguided model fails to maintain a clear spatial focus.
-      We further extend the framework to binaural beamforming for a dynamic target speaker, trained using a
-      head-related transfer function (HRTF)-based acoustic simulation of a moving speaker. Spatial-cue preservation
-      is evaluated via interaural level and time differences (ILD/ITD), demonstrating suitability for hearable
-      applications.
-  </p>
+   This demo accompanies our work on interpretable deep, time-varying beamforming for a moving target speaker. We evaluate the framework in three operating modes:
+    oracle guidance using the true relative transfer function (RTF), guidance using subspace-tracked (PAST) RTF estimates, and operation without RTF guidance. 
+    In the 8-microphone section, we highlight speech enhancement performance on multichannel recordings, while the binaural section examines binaural cue preservation 
+    under the different guidance modes. </p>
 
   <!-- ================= BINAURAL / SPATIAL ANALYSIS ================= -->
   <section id="binaural-analysis">
